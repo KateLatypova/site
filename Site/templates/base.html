@@ -1,0 +1,100 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<!--[if lt IE 7]><html lang="ru" class="lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html lang="ru" class="lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html lang="ru" class="lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html lang="ru"><!--<![endif]-->
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}">
+        <link rel="stylesheet" href="{% static 'libs/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'libs/font-awesome-4.4.0/css/font-awesome.css' %}">
+        <link rel="stylesheet" href="{% static 'css/nav.css' %}">
+        {% block extend_css %}{% endblock %}
+        {% block extend_js %}{% endblock %}
+        <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    </head>
+    <body>
+        <!--[if lt IE 9]>
+        <div id="bg">
+            {% block background %}{% endblock %}
+        </div>
+        <![endif]-->
+        <header class="main-header">
+            <nav>
+                <div class="container-fluid">
+                    <div class="row">
+                        <ul class="menu">
+                            <li class="button-user col-md-2 col-sm-4 col-xs-4">
+                                {% if not user.is_authenticated %}
+                                    <a class="button-auth font-awesome-button">
+                                        <span class="fa fa-sign-in"></span>
+                                    </a>
+                                {% else %}
+                                    <a href="{% url "account:logout" %}" class="font-awesome-button">
+                                        <span>{{ user.username }}</span>
+                                        <span class="fa fa-sign-out"></span>
+                                    </a>
+                                {% endif %}
+                            </li>
+                            <li class="button-contacts col-md-2 col-sm-4 col-xs-4">
+                                <button class="font-awesome-button">
+                                    <span class="fa fa-envelope"></span>
+                                </button>
+                            </li>
+                            <li class="button-nav col-sm-4 col-xs-4 hidden-md hidden-lg">
+                                <button class="font-awesome-button">
+                                    <span class="fa fa-bars"></span>
+                                </button>
+                            </li>
+                            <li class="nav-links col-md-2 col-xs-2">
+                                <a href="{% url 'index_page' %}">Главная</a>
+                            </li>
+                            <li class="col-md-2 col-xs-1 nav-links">
+                                <a href="{% url 'description_page' %}">Обо мне</a>
+                            </li>
+                            <li class="col-md-2 col-xs-2 nav-links">
+                                <a href="{% url 'gallery_page' %}">Галерея</a>
+                            </li>
+                            <li class="col-md-2 col-xs-2 nav-links">
+                                <a href="{% url 'visit_page' %}">Посещения</a>
+                            </li>
+                            <li class="contacts-links col-md-1 col-xs-2">
+                                <a href="http://vk.com/id77484180" title="vk">
+                                    <i class="fa fa-vk"></i>
+                                </a>
+                            </li>
+                            <li class="contacts-links col-md-1 col-xs-2">
+                                <a href="mailto:katelat3009@gmail.com" title="gmail">
+                                    <i class="fa fa-google"></i>
+                                </a>
+                            </li>
+                            <li class="contacts-links col-md-1 col-xs-2">
+                                <a href="http://github.com/lakate" title="github">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% include 'authForm.html' %}
+            </nav>
+        </header>
+
+        {% block content %}{% endblock %}
+
+        <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+        <![endif]-->
+        <script src="{% static 'libs/jquery/jquery-1.12.0.min.js' %}"></script>
+        <script src="{% static 'js/jquery.cookie.js' %}"></script>
+        <script src="{% static 'libs/bootstrap/js/bootstrap.min.js' %}"></script>
+        <script src="{% static 'js/nav.js' %}"></script>
+        <script src="{% static 'js/authLogin.js' %}"></script>
+
+    </body>
+</html>

@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Обо мне{% endblock %}
+
+{% block extend_css %}
+    <link rel="stylesheet" href="{% static 'css/description.css' %}">
+{% endblock %}
+
+{% block extend_js %}
+    <!--[if lt IE 9]>
+    <script>
+        document.createElement('header');
+        document.createElement('nav');
+        document.createElement('section');
+        document.createElement('article');
+        document.createElement('aside');
+        document.createElement('footer');
+    </script>
+    <![endif]-->
+{% endblock %}
+
+{% block background %}
+    <img src="{% static 'images/32.jpg' %}" alt="">
+{% endblock %}
+
+{% block content %}
+    <main class="description-page-content">
+        <div class="container-fluid temp">
+            <div class="row">
+                <article class="col-md-6 col-sm-6 welcome">
+                    <h1>Здравствуйте, меня зовут Катя</h1>
+                </article>
+                <article class="col-md-4 col-md-offset-8 col-sm-offset-8 col-sm-4 col-xs-4 col-xs-offset-8 first-about">
+                    <p>Мне 20 лет, я из Казахстана, но сейчас живу в прекрасном городе - Екатеринбурге</p>
+                    <p>Я люблю читать книги, заниматься спортом, и пробовать что-то новое</p>
+                </article>
+            </div>
+            <div class="row">
+                <article class="col-md-4 col-sm-4 second-about">
+                    <p>А еще люблю программировать. Я думаю, что создать что-то полезное для других людей можно только тогда,
+                        когда ты получаешь удовольствие не только от результата, но и от процесса!<br>
+                        Каждый курс для меня — это новые знания, новые люди, новый мир.
+                    </p>
+                </article>
+            </div>
+            <div class="row">
+                <article class="col-md-4 col-md-offset-8 col-sm-offset-8 col-sm-4 third-about">
+                    <p>
+                        Именно поэтому я пошла учиться в
+                        <a href="http://urfu.ru/ru/">Уральский Федеральный Университет</a>
+                    </p>
+                    <p>
+                        Сейчас уже учусь на 3 курсе,
+                        в <a href="http://imkn.urfu.ru/"> Институте математики и компьютерных наук</a>,
+                        на специалиста по компьютерной безопасности
+                    </p>
+                </article>
+            </div>
+        </div>
+    </main>
+{% endblock %}

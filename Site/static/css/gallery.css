@@ -1,0 +1,149 @@
+html,
+body
+{
+    height: 100%;
+    min-width: 500px;
+    background: url("../images/f2.jpg") no-repeat fixed center center;
+    background-size: cover;
+    color: #fff;
+    font-family: 'Lobster', 'Arizonia', 'Arial', cursive;
+}
+
+a,
+a:hover
+{
+    color: #fff;
+}
+
+.menu li
+{
+    border: 1px solid #fff;
+}
+
+.gallery-page-content
+{
+    padding: 25px;
+}
+
+.gallery-column
+{
+    margin-left: 10px;
+    margin-bottom: 15px;
+}
+
+.gallery-column div
+{
+    margin: 10px 0;
+    -webkit-transition: transform .5s;
+    -moz-transition: transform .5s;
+    -ms-transition: transform .5s;
+    -o-transition: transform .5s;
+    transition: transform .5s;
+}
+
+.photos
+{
+    height: 200px;
+    width: 100%;
+}
+
+.photos:hover
+{
+    border: 1px solid #fff;
+}
+
+.gallery-column div:hover
+{
+    transform: scale(1.1);
+}
+
+.modal
+{
+    color: #000;
+}
+
+.control-modal
+{
+    text-align: center;
+    font-family: 'Poiret One', cursive;
+}
+
+.modal-picture
+{
+    opacity: 0;
+}
+
+.loaded
+{
+    opacity: 1;
+}
+
+.hide
+{
+    display: none;
+}
+
+.load-image
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -75px;
+    margin-top: -60px;
+}
+
+.comments
+{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.user p
+{
+    margin: 0;
+}
+
+.comments-header
+{
+    font-size: 12px;
+    color: #666;
+}
+
+.comment-body
+{
+    margin-top: 5px;
+}
+
+.comments article
+{
+    margin: 10px;
+}
+
+.modal-body .row
+{
+    margin: 0;
+    margin-top: 10px;
+}
+
+.panel-login .panel-head a
+{
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #666;
+    font-size: 18px;
+}
+
+.panel-login .panel-head a.active
+{
+    color: #765E9C;
+}
+
+.new-comment
+{
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.comments,
+.new-comment
+{
+    word-break: break-all;
+}

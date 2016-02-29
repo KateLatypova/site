@@ -1,0 +1,94 @@
+{% load widget_tweaks %}
+
+<div id="auth" class="modal fade in" role="dialog" tabindex="-1" style="display: none">
+    <div class="modal-dialog modal-sm">
+        <div class="panel panel-login">
+            <div class="row panel-head nav-panel">
+                <div class="col-xs-6">
+                    <a href class="active" id="login-form-link">Авторизация</a>
+                </div>
+                <div class="col-xs-5">
+                    <a href id="register-form-link">Регистрация</a>
+                </div>
+                <button type="button" class="close col-xs-1" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="row panel-body nav-panel">
+                <div class="col-lg-12">
+                    <form id="login-form" action="login" method="post" style="display: block">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {% render_field autheticationForm.username id="id_username_log" name="username" class="form-control" tabindex="1" %}
+                            <p id="username-error-log" class="alert alert-danger custom-dang"
+                               role="alert" style="display: none">
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            {% render_field autheticationForm.password name="password" class="form-control" tabindex="2" %}
+                            <p id="password-error-log" class="alert alert-danger custom-dang"
+                               role="alert" style="display: none">
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <p id="other-errors-log" class="alert alert-danger custom-dang"
+                               role="alert" style="display: none">
+                            </p>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                                    <input type="submit" tabindex="3"
+                                           class="form-control btn btn-info" value="Log In">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form id="register-form" action="registration" method="post" style="display: none">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {% render_field registrationForm.username id="id_username_reg" name="username" class="form-control" tabindex="1" %}
+                            <p id="username-error-reg" class="alert alert-danger custom-dang" role="alert" style="display: none">
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            {% render_field registrationForm.email id="id_email_reg" name="email" class="form-control" tabindex="2" %}
+                            <p id="email-error-reg" class="alert alert-danger custom-dang" role="alert" style="display: none">
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            {% render_field registrationForm.firstname name="firstname" class="form-control" tabindex="3" %}
+                            <p id="firstname-error-reg" class="alert alert-danger custom-dang" role="alert" style="display: none">
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            {% render_field registrationForm.lastname name="lastname" class="form-control" tabindex="4" %}
+                            <p id="surname-error-reg" class="alert alert-danger custom-dang" role="alert" style="display: none">
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            {% render_field registrationForm.password1 name="password1" class="form-control" tabindex="5" %}
+                            <p id="password1-error-reg" class="alert alert-danger custom-dang" role="alert" style="display: none">
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            {% render_field registrationForm.password2 name="password2" class="form-control" tabindex="6" %}
+                            <p id="password2-error-reg" class="alert alert-danger custom-dang" role="alert" style="display: none">
+                            </p>
+                        </div>
+                        <div class="form-group">
+                            <p id="other-errors-reg" class="alert alert-danger custom-dang" role="alert" style="display: none">
+                            </p>
+                            <div class="row">
+                                <div class="col-md-8 col-md-offset-3 col-sm-offset-2 col-xs-offset-1">
+                                    <input type="submit" name="register-submit"
+                                           id="register-submit" tabindex="9"
+                                           class="form-control btn btn-info btn-register"
+                                           value="Get Started">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Посещения{% endblock %}
+
+{% block extend_css %}
+    <link rel="stylesheet" href="{% static 'css/visit.css' %}">
+{% endblock %}
+
+{% block background %}
+    <img src="{% static 'images/bg.jpg' %}" alt="">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid visit-page-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <table class="table table-hover">
+                            <thead>
+                                <th>#</th>
+                                <th>IP</th>
+                                <th>Последний визит</th>
+                                <th>Просмотренные страницы</th>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>127.0.0.1</td>
+                                    <td>28.02.2016</td>
+                                    <td>10</td>
+                                </tr>
+                                <tr></tr>
+                                <tr></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

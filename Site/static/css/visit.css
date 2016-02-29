@@ -1,0 +1,16 @@
+body
+{
+    background: url("../images/f1.jpg") fixed center center;
+}
+
+th,
+td
+{
+    text-align: center;
+}
+
+.visit-page-content .row
+{
+    margin-right: 25px;
+    margin-left: 25px;
+}
