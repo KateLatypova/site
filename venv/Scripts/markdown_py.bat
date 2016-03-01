@@ -1,1 +1,0 @@
-@"C:\Users\mv\Desktop\LaKate-Site\venv\Scripts\python3.exe" "C:\Users\mv\Desktop\LaKate-Site\venv\Scripts\markdown_py" %*
