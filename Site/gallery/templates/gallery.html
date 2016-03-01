@@ -43,37 +43,10 @@
                         <div class="modal-body">
                             <img id="loadGif" class="img-responsive load-image hide"
                                  src="{% static 'images/preload_cat2.gif' %}" alt="png">
-                            <img class="modal-picture img-responsive" src="" alt="current-picture" title="">
+                            <img id="currentImage" class="modal-picture img-responsive" style="margin: 0 auto" src="" alt="current-picture" title="">
+                            <div id="allComments" class="container-fluid">
+                            </div>
                             <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <section class="comments">
-                                            <article class="row" id="comment_1">
-                                                <div class="col-md-12 col-sm-12">
-                                                    <div class="panel panel-default">
-                                                        <div class="panel-body">
-                                                            <header class="comments-header">
-                                                                <div class="user">
-                                                                    <p>
-                                                                        <span class="fa fa-user"></span>
-                                                                        Lakate
-                                                                    </p>
-                                                                </div>
-                                                                <time>
-                                                                    <span class="fa fa-clock-o"></span>
-                                                                    26.02.2015
-                                                                </time>
-                                                            </header>
-                                                            <div class="comment-body">
-                                                                <p><em>Красота</em></p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </article>
-                                        </section>
-                                    </div>
-                                </div>
                                 <div class="row">
                                     <div class="col-md-12 new-comment">
                                         <div class="form-group">
@@ -81,7 +54,7 @@
                                                 <label for="newComment">Ваш комментарий:</label>
                                                 <form id="commentForm" action="" method="post" role="form">
                                                     {% csrf_token %}
-                                                    <textarea id="newComment" name="newComment" class="new-comment-textarea form-control" style="width: 100%; resize: vertical" rows="10" maxlength="256" tabindex="1"></textarea>
+                                                    <textarea id="newComment" name="newComment" class="new-comment-textarea form-control" rows="10" maxlength="256" tabindex="1"></textarea>
                                                     {% markdown_editor "#newComment" %}
                                                     {% markdown_media %}
                                                 </form>
@@ -111,14 +84,15 @@
             <div class="row gallery-column">
                 {% for img in images %}
                     <div class="col-md-3 col-sm-3 col-xs-3">
-                        <img src="{{ MEDIA_URL }}{{img.image}}" class="photos">
-                        {% empty %}
-                        <h1 class="text-center">Ничего нет :<</h1>
+                        <img class="photos" src="{{ MEDIA_URL }}{{img.image}}">
                     </div>
+                {% empty %}
+                    <h1 class="text-center">Ничего нет :<</h1>
                 {% endfor %}
             </div>
         </div>
     </main>
 
     <script src="{% static 'js/gallery.js' %}"></script>
+    <script src="{% static 'js/comments.js' %}"></script>
 {% endblock %}

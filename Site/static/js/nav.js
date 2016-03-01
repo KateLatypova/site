@@ -11,11 +11,6 @@ $(document).ready(function() {
         $(".nav-links").slideToggle();
     });
 
-    var login = document.querySelector('.button-auth');
-    login.addEventListener('click', function () {
-        $('#auth').modal();
-    });
-
     var authLink = document.getElementById('register-form-link');
     var logLink = document.getElementById('login-form-link');
     var authForm = document.getElementById('register-form');

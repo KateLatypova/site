@@ -1,7 +1,7 @@
 $('#register-form').submit(function (event) {
     $.ajax({
         type: 'POST',
-        url: '/account/register/',
+        url: '/home/register/',
         data: {
             username: $('#id_username_reg').val(),
             email: $('#id_email_reg').val(),
@@ -74,7 +74,7 @@ $('#register-form').submit(function (event) {
 $('#login-form').submit(function(event){
     $.ajax({
          type:'POST',
-         url:'/account/login/',
+         url:'/home/login/',
          data: {
              username: $('#id_username_log').val(),
              password: $('#id_password').val(),

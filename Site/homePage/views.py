@@ -2,9 +2,17 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.contrib.auth import login as djangoLogin, logout as djangoLogout, authenticate
 from django.http import JsonResponse, HttpResponse
-from django.shortcuts import redirect
+from django.shortcuts import redirect, render
 
 from homePage.forms import RegistrationForm, AuthenticationForm
+
+
+def index_page(request):
+    return render(request, 'index.html', {})
+
+
+def description_page(request):
+    return render(request, 'description.html', {})
 
 
 def register(request):

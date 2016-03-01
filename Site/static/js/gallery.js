@@ -1,6 +1,7 @@
 /**
  * Created by mv on 11.02.2016.
  */
+
 var allPhotos = document.querySelectorAll('.photos'),
     photosArray = [].slice.call(allPhotos),
     currentImg;
@@ -11,7 +12,7 @@ photosArray.forEach(function (photo) {
             currentImg = this;
             pasteNewImg(currentImg);
         });
-})
+});
 
 document.body.addEventListener('keydown', function(elem) {
     if (elem.keyCode === 112) {
@@ -38,7 +39,7 @@ document.body.addEventListener('keydown', function(elem) {
             }
         }
     }
-})
+});
 
 var galleryModalPicture = document.querySelector('#galleryModal .modal-body .modal-picture');
 var loadGig = document.getElementById('loadGif');
@@ -47,6 +48,7 @@ var pasteNewImg = function (photo) {
     galleryModalPicture.src = photo.src;
     galleryModalPicture.title = photo.title;
     loadNewImg(galleryModalPicture, loadGig);
+    getComments(photo.src);
 };
 
 function loadNewImg(img, gif) {

@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django_markdown',
     'widget_tweaks',
 
+    'homePage',
     'gallery'
 )
 

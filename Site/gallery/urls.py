@@ -16,9 +16,10 @@ Including another URLconf
 from django.conf.urls import url
 
 urlpatterns = [
-    url(r'^$', 'homePage.views.index_page', name='index_page'),
-    url(r'^about/', 'homePage.views.description_page', name='description_page'),
-    url(r'^register/', 'homePage.views.register', name='register'),
-    url(r'^login/', 'homePage.views.login', name='login'),
-    url(r'^logout/', 'homePage.views.logout', name='logout')
+    url(r'^main/', 'gallery.views.main_page', name='main_page'),
+    url(r'^send-comment/', 'gallery.views.send_comment', name='send_comment'),
+    url(r'^get-comments/', 'gallery.views.get_comments', name='get_comments'),
+    url(r'^delete-comment/(?P<id_comment>[0-9]+)$', 'gallery.views.delete_comment', name='delete_comment'),
+    url(r'^get-edit-form/(?P<id_comment>[0-9]+)$', 'gallery.views.get_edit_form', name='get_edit_form'),
+    url(r'^edit-comment/(?P<id_comment>[0-9]+)$', 'gallery.views.edit_comment', name='edit_comment'),
 ]

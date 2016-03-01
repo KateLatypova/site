@@ -9,3 +9,10 @@ class CommentForm(forms.ModelForm):
     class Meta:
         model = CommentForImage
         fields = ['comment']
+
+
+class DeleteCommentForm(forms.ModelForm):
+
+    class Meta:
+        model = CommentForImage
+        fields = []

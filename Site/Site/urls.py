@@ -20,10 +20,8 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', 'Site.views.index_page', name='index_page'),
-    url(r'^about/', 'Site.views.description_page', name='description_page'),
-    url(r'^gallery/', 'Site.views.gallery_page', name='gallery_page'),
+    url(r'^home/', include('homePage.urls', namespace='home')),
+    url(r'^gallery/', include('gallery.urls', namespace='gallery')),
     url(r'^visit/', 'Site.views.visit_page', name='visit_page'),
-    url(r'^account/', include('homePage.urls', namespace="account")),
     url('^markdown/', include('django_markdown.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

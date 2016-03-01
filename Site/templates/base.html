@@ -37,11 +37,11 @@
                         <ul class="menu">
                             <li class="button-user col-md-2 col-sm-4 col-xs-4">
                                 {% if not user.is_authenticated %}
-                                    <a class="button-auth font-awesome-button">
+                                    <a class="button-auth font-awesome-button" onclick="$('#auth').modal()">
                                         <span class="fa fa-sign-in"></span>
                                     </a>
                                 {% else %}
-                                    <a href="{% url "account:logout" %}" class="font-awesome-button">
+                                    <a href="{% url "home:logout" %}" class="font-awesome-button">
                                         <span>{{ user.username }}</span>
                                         <span class="fa fa-sign-out"></span>
                                     </a>
@@ -58,13 +58,13 @@
                                 </button>
                             </li>
                             <li class="nav-links col-md-2 col-xs-2">
-                                <a href="{% url 'index_page' %}">Главная</a>
+                                <a href="{% url 'home:index_page' %}">Главная</a>
                             </li>
                             <li class="col-md-2 col-xs-1 nav-links">
-                                <a href="{% url 'description_page' %}">Обо мне</a>
+                                <a href="{% url 'home:description_page' %}">Обо мне</a>
                             </li>
                             <li class="col-md-2 col-xs-2 nav-links">
-                                <a href="{% url 'gallery_page' %}">Галерея</a>
+                                <a href="{% url 'gallery:main_page' %}">Галерея</a>
                             </li>
                             <li class="col-md-2 col-xs-2 nav-links">
                                 <a href="{% url 'visit_page' %}">Посещения</a>

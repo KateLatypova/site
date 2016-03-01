@@ -147,3 +147,8 @@ a:hover
 {
     word-break: break-all;
 }
+
+textarea
+{
+    resize: vertical; !important;
+}
