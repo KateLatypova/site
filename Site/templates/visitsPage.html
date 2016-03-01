@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %}Посещения{% endblock %}
+
+{% block extend_css %}
+    <link rel="stylesheet" href="{% static 'css/visits-hits.css' %}">
+{% endblock %}
+
+{% block background %}
+    <img src="{% static 'images/bg.jpg' %}" alt="">
+{% endblock %}
+
+{% block content %}
+    <main>
+        <div class="container-fluid visit-page-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <table class="table table-hover">
+                            <thead>
+                                <th>#</th>
+                                <th>IP</th>
+                                <th>URI</th>
+                                <th>Последний визит</th>
+                                <th>Визиты</th>
+                            </thead>
+                            <tbody>
+                                {% for visits_by_ip in all_visits_by_ip %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td title="{{ visits_by_ip.ip_address }}">{{ visits_by_ip.ip_address }}</td>
+                                        <td title="{{ visits_by_ip.uri }}">{{ visits_by_ip.uri|truncatechars:40 }}</td>
+                                        <td>{{ visits_by_ip.last_visit }}</td>
+                                        <td>{{ visits_by_ip.visits }}</td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+{% endblock %}

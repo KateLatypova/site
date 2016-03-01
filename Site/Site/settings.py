@@ -42,10 +42,12 @@ INSTALLED_APPS = (
     'widget_tweaks',
 
     'homePage',
-    'gallery'
+    'gallery',
+    'visits'
 )
 
 MIDDLEWARE_CLASSES = (
+    'Site.remoteAddrFromForwardedFor.SetRemoteAddrFromForwardedFor',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -54,9 +56,15 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'visits.middleware.CounterMiddleware',
+    'visits.middleware.BotVisitorMiddleware'
 )
 
 ROOT_URLCONF = 'Site.urls'
+
+IGNORE_USER_AGENTS = ['Wget/", "curl/']
+
+MIN_TIME_BETWEEN_VISITS = 10
 
 TEMPLATES = [
     {

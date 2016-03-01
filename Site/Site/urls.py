@@ -22,6 +22,7 @@ urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^home/', include('homePage.urls', namespace='home')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),
-    url(r'^visit/', 'Site.views.visit_page', name='visit_page'),
+    url(r'^hits/', 'Site.views.hits_page', name='hits_page'),
+    url(r'^visits-page/(?P<ip_address>.+)$', 'Site.views.visits_page', name='visits_page'),
     url('^markdown/', include('django_markdown.urls'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

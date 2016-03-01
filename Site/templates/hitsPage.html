@@ -4,7 +4,7 @@
 {% block title %}Посещения{% endblock %}
 
 {% block extend_css %}
-    <link rel="stylesheet" href="{% static 'css/visit.css' %}">
+    <link rel="stylesheet" href="{% static 'css/visits-hits.css' %}">
 {% endblock %}
 
 {% block background %}
@@ -25,14 +25,16 @@
                                 <th>Просмотренные страницы</th>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>127.0.0.1</td>
-                                    <td>28.02.2016</td>
-                                    <td>10</td>
-                                </tr>
-                                <tr></tr>
-                                <tr></tr>
+                                {% for hit in hits_by_ip %}
+                                    <tr>
+                                        <td>{{ forloop.counter }}</td>
+                                        <td title="{{ hit.0 }}">
+                                            <a href="{% url "visits_page" hit.0 %}">{{ hit.0 }}</a>
+                                        </td>
+                                        <td>{{ hit.1 }}</td>
+                                        <td>{{ hit.2 }}</td>
+                                    </tr>
+                                {% endfor %}
                             </tbody>
                         </table>
                     </div>
