@@ -3,6 +3,10 @@ from django.utils import timezone
 from visits.models import Visit
 
 
+def index_page(request):
+    return render(request, 'index.html', {})
+
+
 # Terrible function
 def hits_page(request):
     hits_by_ip = {}

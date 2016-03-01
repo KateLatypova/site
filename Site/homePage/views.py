@@ -7,10 +7,6 @@ from django.shortcuts import redirect, render
 from homePage.forms import RegistrationForm, AuthenticationForm
 
 
-def index_page(request):
-    return render(request, 'index.html', {})
-
-
 def description_page(request):
     return render(request, 'description.html', {})
 

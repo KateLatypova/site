@@ -16,7 +16,6 @@ Including another URLconf
 from django.conf.urls import url
 
 urlpatterns = [
-    url(r'^$', 'homePage.views.index_page', name='index_page'),
     url(r'^about/', 'homePage.views.description_page', name='description_page'),
     url(r'^register/', 'homePage.views.register', name='register'),
     url(r'^login/', 'homePage.views.login', name='login'),
