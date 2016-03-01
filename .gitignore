@@ -1,6 +1,6 @@
 .DS_store
-.idea
-media
+.idea/
+media/
 db.sqlite3
-__pycache__
-venv
+__pycache__/
+venv/
