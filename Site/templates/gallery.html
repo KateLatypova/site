@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load staticfiles %}
+{% load django_markdown %}
 
 {% block title %}Галерея{% endblock %}
 
@@ -76,12 +77,19 @@
                                 <div class="row">
                                     <div class="col-md-12 new-comment">
                                         <div class="form-group">
-                                            <label for="new-comment">Ваш комментарий:</label>
-                                            <form id="comment-form" action="" method="post" role="form">
-                                                <textarea name="new-comment" rows="10" id="new-comment" maxlength="256"
-                                                      tabindex="1" class="new-comment-textarea form-control">
-                                                </textarea>
-                                            </form>
+                                            {% if user.is_authenticated %}
+                                                <label for="newComment">Ваш комментарий:</label>
+                                                <form id="commentForm" action="" method="post" role="form">
+                                                    {% csrf_token %}
+                                                    <textarea id="newComment" name="newComment" class="new-comment-textarea form-control" style="width: 100%; resize: vertical" rows="10" maxlength="256" tabindex="1"></textarea>
+                                                    {% markdown_editor "#newComment" %}
+                                                    {% markdown_media %}
+                                                </form>
+                                            {% else %}
+                                                <div class="alert alert-warning" role="alert">
+                                                    Только авторизованные пользователи могут оставлять комментарии и ставить лайки !
+                                                </div>
+                                            {% endif %}
                                         </div>
                                     </div>
                                 </div>
@@ -89,14 +97,13 @@
                             <div class="container-fluid">
                                 <div class="row">
                                     <div class="col-md-12">
-
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-                            <button type="button" class="btn btn-primary">Отправить комментарий</button>
+                            <button id="commentSubmit" name="comment-submit" class="btn btn-primary" type="submit" tabindex="2">Отправить комментарий</button>
                         </div>
                     </div>
                 </div>
@@ -105,6 +112,8 @@
                 {% for img in images %}
                     <div class="col-md-3 col-sm-3 col-xs-3">
                         <img src="{{ MEDIA_URL }}{{img.image}}" class="photos">
+                        {% empty %}
+                        <h1 class="text-center">Ничего нет :<</h1>
                     </div>
                 {% endfor %}
             </div>
