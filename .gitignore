@@ -1,1 +1,6 @@
+.DS_store
+.idea
+media
+db.sqlite3
+__pycache__
 venv
