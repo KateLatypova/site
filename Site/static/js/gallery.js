@@ -6,6 +6,11 @@ var allPhotos = document.querySelectorAll('.photos'),
     photosArray = [].slice.call(allPhotos),
     currentImg;
 
+
+var photosHref = photosArray.map(function(photo) {
+    return photo.src;
+})
+
 photosArray.forEach(function (photo) {
         photo.addEventListener('click', function () {
             $('#galleryModal').modal();
@@ -23,7 +28,7 @@ document.body.addEventListener('keydown', function(elem) {
         newNumber;
 
     if (typeof currentImg !== 'undefined') {
-        currentPhotoNumber = photosArray.indexOf(currentImg);
+        currentPhotoNumber = photosHref.indexOf(currentImg.src);
         if (elem.keyCode === 37) {
             newNumber = currentPhotoNumber - 1;
             if (newNumber >= 0) {
@@ -44,9 +49,14 @@ document.body.addEventListener('keydown', function(elem) {
 var galleryModalPicture = document.querySelector('#galleryModal .modal-body .modal-picture');
 var loadGig = document.getElementById('loadGif');
 
-var pasteNewImg = function (photo) {
+var pasteNewImg = function (photo, flag) {
     galleryModalPicture.src = photo.src;
     galleryModalPicture.title = photo.title;
+    if (!flag) {
+        window.history.pushState({src: photo.src, title: photo.title}, null, null);
+    }
+    currentImg = photo;
+    setCookie('current_image', photo.src);
     loadNewImg(galleryModalPicture, loadGig);
     getComments(photo.src);
 };
@@ -59,3 +69,40 @@ function loadNewImg(img, gif) {
         gif.classList.add('hide');
     }
 }
+
+window.addEventListener('popstate', function(e) {
+    if (e.state !== null) {
+        pasteNewImg(e.state, true);
+    } else {
+        $('#galleryModal').modal("hide");
+    }
+}, false);
+
+function setCookie(name, value, exp) {
+    if (typeof exp !== 'undefined') {
+        document.cookie = name + '=' + value + ';' + 'expires=' + exp.toUTCString() + ';';
+    } else {
+        document.cookie = name + '=' + value + ';';
+    }
+}
+
+function getCookie(name) {
+    var matches = document.cookie.match(new RegExp(
+        '(?:^|; )' + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + '=([^;]*)'
+    ));
+    return matches ? decodeURIComponent(matches[1]) : undefined;
+}
+
+window.onunload = function() {
+    if ($('#galleryModal').is(':visible')) {
+        setCookie('reload', true, new Date(new Date().getTime() + 10 * 1000));
+    }
+};
+
+window.onload = function() {
+    if (getCookie('reload') === 'true') {
+        $('#galleryModal').modal();
+        pasteNewImg({src: getCookie('current_image'), title:'Выживший'}, true);
+        setCookie('reload', false);
+    }
+};
