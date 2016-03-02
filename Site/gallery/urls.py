@@ -22,4 +22,6 @@ urlpatterns = [
     url(r'^delete-comment/(?P<id_comment>[0-9]+)$', 'gallery.views.delete_comment', name='delete_comment'),
     url(r'^get-edit-form/(?P<id_comment>[0-9]+)$', 'gallery.views.get_edit_form', name='get_edit_form'),
     url(r'^edit-comment/(?P<id_comment>[0-9]+)$', 'gallery.views.edit_comment', name='edit_comment'),
+    url(r'^like/$', 'gallery.views.add_like', name='add_like'),
+    url(r'^get-likes/$', 'gallery.views.get_likes', name='get_likes'),
 ]

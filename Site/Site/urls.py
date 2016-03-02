@@ -21,6 +21,7 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'Site.views.index_page', name='index_page'),
+    url(r'^is-authenticated/', 'Site.views.check_autorizovanem', name='check_autorizovanem'),
     url(r'^home/', include('homePage.urls', namespace='home')),
     url(r'^gallery/', include('gallery.urls', namespace='gallery')),
     url(r'^hits/', 'Site.views.hits_page', name='hits_page'),

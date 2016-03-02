@@ -9,7 +9,7 @@ var allPhotos = document.querySelectorAll('.photos'),
 
 var photosHref = photosArray.map(function(photo) {
     return photo.src;
-})
+});
 
 photosArray.forEach(function (photo) {
         photo.addEventListener('click', function () {
@@ -58,6 +58,7 @@ var pasteNewImg = function (photo, flag) {
     currentImg = photo;
     setCookie('current_image', photo.src);
     loadNewImg(galleryModalPicture, loadGig);
+    getLikesForImage(photo.src);
     getComments(photo.src);
 };
 
@@ -106,3 +107,49 @@ window.onload = function() {
         setCookie('reload', false);
     }
 };
+
+// 4-й таск (Супер-лайк)
+var likeOne = $('#likes-icon');
+
+likeOne.click(function () {  // Ничего не делаем с РЕФЕРОМ, а стоило бы
+    $.ajax({
+        type:'GET',
+        url: '/is-authenticated/',
+        success: function(data) {
+            if (data === 'True') {
+                $.ajax({
+                    type:'POST',
+                    url: '/gallery/like/',
+                    data: {
+                        href: $('#currentImage').attr('src')
+                    },
+                    success: function(data) {
+                        $('#likes-counter').empty().append(data);
+                    },
+                    error: function (data) {
+                        alert('Stop hacking my site !');
+                    }
+                });
+            }
+        },
+        error: function (data) {
+            alert('Stop hacking my site !');
+        }
+    });
+});
+
+function getLikesForImage (href) {  // Ничего не делаем с РЕФЕРОМ, а стоило бы
+    $.ajax({
+         type:'GET',
+         url: '/gallery/get-likes/',
+         data: {
+             href: $('#currentImage').attr('src')
+         },
+         success: function(data) {
+             $('#likes-counter').empty().append(data);
+         },
+         error: function (data) {
+             alert('Stop hacking my site !');
+         }
+    });
+}

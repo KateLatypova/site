@@ -182,3 +182,25 @@ def edit_comment(request, id_comment):
                         else:
                             HttpResponse('take it easy !')
     return HttpResponse(request.META['HTTP_REFERER'])
+
+
+@login_required
+def add_like(request):  # Недоработанное место, нет перекида на РЕФЕРЕР в случае чего (смотри JS)
+    if request.method == 'POST':
+        if request.is_ajax():
+            if request.user.is_authenticated():
+                image = get_image(request.POST['href'])
+                if request.user in image.likes.all():
+                    image.likes.remove(request.user)
+                else:
+                    image.likes.add(request.user)
+                return HttpResponse(str(len(image.likes.all())))
+    return HttpResponse(request.META['HTTP_REFERER'])
+
+
+def get_likes(request):  # Недоработанное место, нет перекида на РЕФЕРЕР в случае чего (смотри JS)
+    if request.method == 'GET':
+        if request.is_ajax():
+            image = get_image(request.GET['href'])
+            return HttpResponse(str(len(image.likes.all())))
+    return HttpResponse(request.META['HTTP_REFERER'])

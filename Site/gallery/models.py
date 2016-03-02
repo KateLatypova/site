@@ -8,6 +8,8 @@ from django_markdown.models import MarkdownField
 class AlbumImage(models.Model):
     name = models.CharField(verbose_name='name', max_length=128)
     image = models.ImageField(verbose_name='image', upload_to='gallery')
+    likes = models.ManyToManyField(User, verbose_name='likes', related_name='likes_images', blank=True)
+
 
     class Meta:
         verbose_name = 'Album image'

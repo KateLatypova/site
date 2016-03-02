@@ -1,3 +1,4 @@
+from django.http import HttpResponse
 from django.shortcuts import render
 from django.utils import timezone
 from visits.models import Visit
@@ -6,6 +7,12 @@ from visits.models import Visit
 def index_page(request):
     return render(request, 'index.html', {})
 
+
+def check_autorizovanem(request):  # Недоработанное место, нет перекида на РЕФЕРЕР в случае чего (смотри JS)
+    if request.method == 'GET':
+        if request.is_ajax():
+            return HttpResponse(request.user.is_authenticated())
+    return HttpResponse(request.META['HTTP_REFERER'])
 
 # Terrible function
 def hits_page(request):
