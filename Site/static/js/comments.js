@@ -29,7 +29,7 @@ commentForm.submit(function () {
             }
         },
         error: function (data) {
-            alert('Stop hacking my site !');
+            console.error('Stop hacking my site !');
         }
     });
     return false;
@@ -56,7 +56,7 @@ function getComments (href) {
             }
         },
         error: function (data) {
-            alert('Stop hacking my site !');
+            console.error('Stop hacking my site !');
         }
     });
 }
@@ -74,7 +74,7 @@ function deleteComment (id) {
              }
          },
          error: function (data) {
-             alert('Stop hacking my site !');
+             console.error('Stop hacking my site !');
          }
     });
 }
@@ -104,7 +104,7 @@ function showEditForm (id) {  // Ничего не делаем с РЕФЕРО�
              addList($('#edit_form'), id);
          },
          error: function (data) {
-             alert('Stop hacking my site !');
+             console.error('Stop hacking my site !');
          }
     });
 }
@@ -128,7 +128,7 @@ function addList(editForm, id) {
                 }
             },
             error: function (data) {
-                alert('Stop hacking my site !');
+                console.error('Stop hacking my site !');
             }
         });
         return false;
