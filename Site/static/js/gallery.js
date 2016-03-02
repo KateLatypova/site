@@ -127,13 +127,13 @@ likeOne.click(function () {  // Ничего не делаем с РЕФЕРОМ
                         $('#likes-counter').empty().append(data);
                     },
                     error: function (data) {
-                        alert('Stop hacking my site !');
+                        console.error('Stop hacking my site !');
                     }
                 });
             }
         },
         error: function (data) {
-            alert('Stop hacking my site !');
+            console.error('Stop hacking my site !');
         }
     });
 });
@@ -149,7 +149,7 @@ function getLikesForImage (href) {  // Ничего не делаем с РЕФ�
              $('#likes-counter').empty().append(data);
          },
          error: function (data) {
-             alert('Stop hacking my site !');
+             console.error('Stop hacking my site !');
          }
     });
 }
