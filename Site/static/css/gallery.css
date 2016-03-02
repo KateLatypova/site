@@ -152,3 +152,31 @@ textarea
 {
     resize: vertical; !important;
 }
+
+.likes
+{
+    padding-left: 30px;
+}
+
+.likes-icon
+{
+    vertical-align: middle;
+}
+
+.likes-icon:hover
+{
+    -webkit-animation-name: heartbeet;
+    animation-name: heartbeet;
+    animation-duration: .5s;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+}
+
+@keyframes heartbeet {
+    0% {
+        transform: scale(1);
+    }
+    100% {
+        transform: scale(1.2);
+    }
+}
