@@ -117,6 +117,6 @@ a:hover
 .contacts-links
     {
         display: none;
-        width: 60%;
+        width: 100%;
         z-index: 10;
     }

@@ -10,8 +10,7 @@
     .nav-links
     {
         display: none;
-        right: -40%;
-        width: 60%;
+        width: 100%;
         z-index: 10;
     }
 
